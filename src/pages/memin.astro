@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Memin">
+  <main class="memin-container">
+    <img src="/memin.webp" alt="Memin" class="memin-image" />
+  </main>
+</Layout>
+
+<style>
+  :global(body) {
+    background-color: #000;
+    background-image: none; /* Anulamos el fondo de la boda */
+  }
+
+  .memin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .memin-image {
+    max-width: 100%;
+    max-height: 90vh;
+    height: auto;
+  }
+</style>

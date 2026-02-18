@@ -1,0 +1,752 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos de la invitación (Inventados para el ejemplo)
+const boda = {
+  novios: "Araceli & Victor",
+  fecha: "30 de Febrero, 2025",
+  lugarMisa: "Parroquia de San Juan Bautista",
+  direccionMisa: "Calle Hidalgo #45, Centro Histórico",
+  horaMisa: "19:00 HRS",
+  lugarRecepcion: "Hacienda Elegancia",
+  direccionRecepcion: "Sierra Madre Occidental 1011 m. Mercado de Lopez sanchez 27000 Torreón Coah",
+  horaRecepcion: "21:00 HRS",
+  codigoVestimenta: "Etiqueta Rigurosa"
+};
+---
+
+<Layout>
+	<main>
+		<!-- Sección Principal (Hero) -->
+		<section class="hero">
+			<div class="overlay"></div>
+			<div class="content">
+				<p class="pre-title hero-anim-1">Estás invitado a nuestro aniversario</p>
+				<h1 class="title hero-anim-2">{boda.novios}</h1>
+				<div class="divider hero-anim-3"></div>
+				<p class="date hero-anim-4">{boda.fecha}</p>
+			</div>
+		</section>
+
+		<!-- Sección de Historia -->
+		<section class="story-section animate-sequence">
+			<div class="story-content">
+				<h2 class="story-title scroll-item">Hace 25 años iniciamos nuestra historia</h2>
+				<div class="divider-gold scroll-item expand-width"></div>
+				<p class="story-text scroll-item">
+					Y desde entonces hemos caminado juntos, hemos superado obstáculos, hemos cumplido metas, llorado juntos y hemos creado una familia hermosa y unida.
+				</p>
+			</div>
+		</section>
+
+		<!-- Sección de Detalles -->
+		<section class="details">
+			<!-- Bloque Ceremonia Religiosa (Nuevo Diseño) -->
+			<div class="ceremony-block animate-sequence">
+				<div class="ceremony-text">
+					<span class="label-top scroll-item from-left">Parroquia</span>
+					<h2 class="church-name scroll-item from-left">De Ntra. Sra. de San Juan de los Lagos</h2>
+					
+					<div class="time-row scroll-item from-left">
+						<div class="icon-box">
+							<svg class="floating-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+						</div>
+						<span class="time-display">19:00 HRS</span>
+					</div>
+
+					<div class="location-info scroll-item from-left">
+						<h3>Cómo llegar</h3>
+						<p>Avenida Abasolo y Calle 23 Cuarto de Cobian #2533 centro, Torreón Coah</p>
+						<iframe src="https://maps.google.com/maps?q=25.542053775738854, -103.42042154018687&hl=es&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						<a href="https://maps.app.goo.gl/5Sqm9BxDr82X8Y4X7" target="_blank" class="btn-maps">Abrir en Google Maps</a>
+					</div>
+				</div>
+				<div class="ceremony-image scroll-item from-right">
+					<img src="/iglesia.webp" alt="Parroquia de Ntra. Sra. de San Juan de los Lagos" />
+				</div>
+			</div>
+
+			<!-- Bloque Recepción (Nuevo Diseño Invertido) -->
+			<div class="reception-block slide-up delay-1">
+				<div class="reception-image">
+					<img src="/recepcion.webp" alt="Recepción" />
+				</div>
+				<div class="reception-text">
+					<span class="label-top">Recepción</span>
+					<h2 class="venue-name">{boda.lugarRecepcion}</h2>
+					<div class="time-row">
+						<div class="icon-box">
+							<svg class="floating-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 21v-8"/><path d="M6 4h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M12 4v8"/></svg>
+						</div>
+						<span class="time-display">{boda.horaRecepcion}</span>
+					</div>
+					<div class="location-info">
+						<h3>Ubicación</h3>
+						<p>{boda.direccionRecepcion}</p>
+						<a href="https://maps.app.goo.gl/cQK3f5LgfZ9NLTiK8?g_st=aw" target="_blank" class="btn-maps">Ver ubicación</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bloque Código de Vestimenta (Interactivo) -->
+			<div class="dress-code-block slide-up delay-2">
+				<h2>Código de Vestimenta</h2>
+				<div class="divider-black"></div>
+				
+				<div class="genders-container">
+					<div class="gender-option">
+						<img src="/traje.png" alt="Icono de vestimenta para hombre" class="gender-icon bounce-hover">
+						<h3>Hombres</h3>
+						<div class="dress-detail">Traje Formal</div>
+					</div>
+					<div class="gender-option">
+						<img src="/vestido.png" alt="Icono de vestimenta para mujer" class="gender-icon bounce-hover">
+						<h3>Mujeres</h3>
+						<div class="dress-detail">Vestido Largo</div>
+					</div>
+				</div>
+				
+				<p class="note">Rigurosa etiqueta.</p>
+			</div>
+
+			<!-- Sección Final (Mensaje de Despedida) -->
+			<div class="final-message animate-sequence">
+				<div class="message-content">
+					<div class="icon-heart scroll-item zoom-in">❤</div>
+					<p class="final-text scroll-item">
+						Que Dios siga bendiciendo nuestro camino. Empecemos ahora esta nueva etapa con nuestros hijos ya formados, listos para emprender el vuelo. Nuevamente tú y yo volvemos a ser novios, ahora con este amor maduro y más fuerte, caminando juntos y siempre de la mano de Dios.
+					</p>
+					<div class="signature scroll-item">{boda.novios}</div>
+					<a href="/memin" class="secret-button scroll-item" aria-label="Enlace secreto"></a>
+				</div>
+			</div>
+		</section>
+	
+	<script>
+		const options = document.querySelectorAll('.gender-option');
+		options.forEach(option => {
+			option.addEventListener('click', () => {
+				option.classList.toggle('active');
+			});
+		});
+
+		// Animación de secuencia al hacer scroll
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const items = entry.target.querySelectorAll('.scroll-item');
+					items.forEach((item, index) => {
+						setTimeout(() => {
+							item.classList.add('visible');
+						}, index * 300); // 300ms de retraso entre cada elemento
+					});
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.2 });
+
+		document.querySelectorAll('.animate-sequence').forEach(block => {
+			observer.observe(block);
+		});
+	</script>
+</Layout>
+
+<style>
+	/* Importamos fuentes elegantes de Google Fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Lato:wght@300;400&display=swap');
+
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		scroll-behavior: smooth;
+		overflow-x: hidden;
+	}
+	
+	:global(body) {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		/* Aquí definimos la imagen como fondo fijo de toda la página */
+		background-image: url('/fondo-boda.webp');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed; /* Esto hace la magia: la imagen no se mueve al scrollear */
+	}
+
+	main {
+		font-family: 'Lato', sans-serif;
+		color: #4a4a4a;
+		/* Quitamos el color de fondo general para que se vea la imagen en el Hero */
+	}
+
+	/* Hero Section */
+	.hero {
+		position: relative;
+		height: 100vh;
+		min-height: 600px;
+		/* Quitamos la imagen de aquí porque ya está en el body */
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		text-align: center;
+		color: white;
+		padding-left: 10%;
+	}
+
+	/* Animaciones Hero Específicas */
+	.hero-anim-1 {
+		opacity: 0;
+		animation: fadeInDown 1s ease-out forwards 0.5s;
+	}
+	.hero-anim-2 {
+		opacity: 0;
+		animation: zoomIn 1.2s ease-out forwards 0.8s;
+	}
+	.hero-anim-3 {
+		width: 0;
+		margin: 20px auto;
+		animation: expandWidth 1s ease-out forwards 1.2s;
+	}
+	.hero-anim-4 {
+		opacity: 0;
+		animation: fadeInUp 1s ease-out forwards 1.6s;
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.content {
+		position: relative;
+		z-index: 10;
+		padding: 20px;
+		max-width: 600px; /* Esto asegura que el bloque no se estire demasiado */
+	}
+
+	.pre-title {
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-size: 0.9rem;
+		margin-bottom: 1rem;
+	}
+
+	.title {
+		font-family: 'Great Vibes', cursive;
+		font-size: 5rem;
+		margin: 0;
+		line-height: 1.2;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+	}
+
+	.divider {
+		height: 2px;
+		width: 100px;
+		background-color: white; /* El margen y width se manejan en la animación */
+	}
+
+	.date {
+		font-family: 'Cinzel', serif;
+		font-size: 1.5rem;
+	}
+
+	/* Story Section */
+	.story-section {
+		background-color: rgba(255, 255, 255, 0.95);
+		padding: 100px 20px;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.story-content {
+		max-width: 800px;
+	}
+
+	.story-title {
+		font-family: 'Cinzel', serif;
+		font-size: 2.5rem;
+		color: #b8860b;
+		margin-bottom: 20px;
+	}
+
+	.story-text {
+		font-size: 1.3rem;
+		line-height: 1.8;
+		color: #555;
+	}
+
+	.divider-gold {
+		height: 3px;
+		width: 80px;
+		background-color: #b8860b;
+		margin: 0 auto 30px auto;
+	}
+
+	/* Detalles Section */
+	.details {
+		background-color: rgba(253, 251, 247, 0.95); /* Color beige con un toquecito de transparencia */
+		padding: 0 0 80px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.card {
+		background: white;
+		padding: 40px;
+		border-radius: 12px;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		text-align: center;
+		max-width: 500px;
+		width: 90%;
+		border: 1px solid #eecfa1;
+		transition: transform 0.3s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-5px);
+	}
+
+	.icon {
+		font-size: 3rem;
+		display: block;
+		margin-bottom: 15px;
+	}
+
+	h2 {
+		font-family: 'Cinzel', serif;
+		color: #b8860b; /* Dark Goldenrod */
+		margin-bottom: 15px;
+	}
+
+	/* Estilos Específicos para el Bloque de Ceremonia */
+	.ceremony-block {
+		background: white;
+		width: 100%;
+		max-width: 100%;
+		display: flex;
+		overflow: hidden;
+		box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+		margin-bottom: 0;
+		padding: 60px 0;
+	}
+
+	.ceremony-text {
+		flex: 3; /* Le damos más espacio al texto para que la imagen se vea más delgada */
+		padding: 50px;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.ceremony-image {
+		flex: 2; /* La imagen ahora ocupa menos espacio proporcionalmente */
+		overflow: hidden; /* Clave para el efecto de zoom */
+		position: relative;
+		min-height: 300px;
+		border-radius: 20px; /* Bordes redondeados */
+		margin-right: 50px; /* Margen para separarla de la pared derecha */
+	}
+
+	.ceremony-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s ease; /* Suavidad del efecto */
+		display: block;
+	}
+
+	/* Efecto Hover: La imagen crece */
+	.ceremony-image:hover img { /* El efecto ahora es solo al pasar sobre la imagen */
+		transform: scale(1.1);
+	}
+
+	.label-top {
+		font-family: 'Cinzel', serif;
+		font-size: 1.1rem;
+		color: black;
+		font-weight: bold;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	.church-name {
+		font-size: 3rem;
+		color: black;
+		margin: 5px 0 20px 0;
+		line-height: 1;
+	}
+
+	/* Estilos para el Bloque de Recepción (Espejo del de Ceremonia) */
+	.reception-block {
+		background: white;
+		width: 100%;
+		max-width: 100%;
+		display: flex;
+		overflow: hidden;
+		box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+		margin-bottom: 20px;
+		padding: 60px 0;
+	}
+
+	.reception-text {
+		flex: 3;
+		padding: 50px;
+		text-align: left; /* Mantenemos el texto a la izquierda para legibilidad */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.reception-image {
+		flex: 2;
+		overflow: hidden;
+		position: relative;
+		min-height: 300px;
+		border-radius: 20px;
+		margin-left: 50px; /* Margen a la izquierda para separarlo de la pared */
+		margin-right: 0;
+	}
+
+	.reception-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s ease;
+		display: block;
+	}
+
+	.reception-image:hover img {
+		transform: scale(1.1);
+	}
+
+	.venue-name {
+		font-size: 3rem;
+		color: black;
+		margin: 5px 0 20px 0;
+		line-height: 1;
+	}
+
+	.icon-box {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		border: 1px solid #b8860b;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #b8860b;
+		background-color: #fffaf0;
+	}
+
+	.floating-icon {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.time-row {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 1.5rem;
+		color: #4a4a4a;
+		margin-bottom: 30px;
+		font-weight: 300;
+	}
+
+	.location-info h3 {
+		font-size: 1.1rem;
+		margin-bottom: 5px;
+		color: #b8860b;
+	}
+
+	.location-info iframe {
+		width: 100%;
+		height: 250px;
+		border: 0;
+		border-radius: 8px;
+		margin-top: 15px;
+	}
+
+	.btn-maps {
+		display: inline-block;
+		margin-top: 10px;
+		text-decoration: none;
+		color: white;
+		background-color: #b8860b;
+		padding: 10px 20px;
+		border-radius: 5px;
+		font-size: 0.9rem;
+		transition: background 0.3s;
+	}
+
+	.btn-maps:hover {
+		background-color: #8f6809;
+	}
+
+	.location {
+		font-weight: bold;
+		font-size: 1.1rem;
+	}
+
+	.time {
+		margin-top: 10px;
+		font-weight: 300;
+		color: #666;
+	}
+
+	.btn-mapa {
+		margin-top: 20px;
+		background: transparent;
+		border: 1px solid #b8860b;
+		color: #b8860b;
+		padding: 10px 20px;
+		cursor: pointer;
+		transition: all 0.3s;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size: 0.8rem;
+	}
+
+	.btn-mapa:hover {
+		background: #b8860b;
+		color: white;
+	}
+
+	/* Animaciones */
+	@keyframes fadeInDown {
+		from { opacity: 0; transform: translateY(-30px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes fadeInUp {
+		from { opacity: 0; transform: translateY(30px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes zoomIn {
+		from { opacity: 0; transform: scale(0.8); }
+		to { opacity: 1; transform: scale(1); }
+	}
+
+	@keyframes expandWidth {
+		from { width: 0; }
+		to { width: 100px; } /* Ajusta según el ancho deseado del divider */
+	}
+
+	@keyframes float {
+		0% { transform: translateY(0px); }
+		50% { transform: translateY(-8px); }
+		100% { transform: translateY(0px); }
+	}
+
+	@keyframes bounce {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-15px); }
+	}
+
+	@keyframes slideUp {
+		from { opacity: 0; transform: translateY(50px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	.slide-up {
+		animation: slideUp 1s ease-out forwards;
+		opacity: 0; /* Start hidden */
+	}
+
+	.delay-1 { animation-delay: 0.3s; }
+	.delay-2 { animation-delay: 0.6s; }
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		:global(body) {
+			background-image: url('/herofinMobile.webp');
+		}
+		.title { font-size: 3.5rem; }
+		.details { padding: 40px 15px; }
+		.ceremony-block {
+			flex-direction: column; /* En celular se pone uno arriba del otro */
+		}
+		.ceremony-image {
+			height: 250px; /* Altura fija para la imagen en celular */
+			margin-right: 0; /* En celular quitamos el margen para que se vea bien centrado */
+		}
+		.reception-block {
+			flex-direction: column;
+		}
+		.reception-image {
+			height: 250px;
+			margin-left: 0;
+		}
+	}
+
+	/* Estilos Código de Vestimenta */
+	.dress-code-block {
+		background: white;
+		width: 100%;
+		max-width: 800px;
+		padding: 40px 20px;
+		border-radius: 20px;
+		box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+		text-align: center;
+		margin-bottom: 40px;
+		margin-top: 40px;
+	}
+
+	.divider-black {
+		height: 2px;
+		width: 60px;
+		background-color: black;
+		margin: 10px auto 30px auto;
+	}
+
+	.genders-container {
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	.gender-option {
+		cursor: pointer;
+		padding: 20px;
+		border-radius: 10px;
+		transition: background 0.3s;
+		flex: 1;
+		min-width: 150px;
+	}
+
+	.gender-option:hover {
+		background-color: #f9f9f9;
+	}
+
+	.gender-option h3 {
+		font-family: 'Cinzel', serif;
+		margin: 0;
+		font-size: 1.5rem;
+		color: #333;
+	}
+
+	.gender-icon {
+		font-size: 4rem;
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	img.gender-icon {
+		width: 4rem;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.bounce-hover:hover {
+		animation: bounce 0.6s ease infinite;
+	}
+
+	.dress-detail {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.5s ease, opacity 0.5s ease;
+		opacity: 0;
+		color: #b8860b;
+		font-weight: bold;
+		font-size: 1.2rem;
+		margin-top: 10px;
+	}
+
+	.gender-option.active .dress-detail {
+		max-height: 100px;
+		opacity: 1;
+	}
+
+	.note {
+		margin-top: 30px;
+		font-style: italic;
+		color: #666;
+		font-size: 0.9rem;
+	}
+
+	/* Animación Scroll Item */
+	.scroll-item {
+		opacity: 0;
+		transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva más suave */
+		transform: translateY(30px); /* Default */
+	}
+
+	.scroll-item.from-left {
+		transform: translateX(-50px);
+	}
+
+	.scroll-item.from-right {
+		transform: translateX(50px);
+	}
+
+	.scroll-item.zoom-in {
+		transform: scale(0.5);
+	}
+
+	.scroll-item.visible {
+		opacity: 1;
+		transform: translate(0) scale(1);
+	}
+
+	/* Final Message Section */
+	.final-message {
+		padding: 100px 20px;
+		text-align: center;
+		/* Fondo eliminado para que se integre con la sección anterior */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	.message-content {
+		max-width: 700px;
+	}
+
+	.icon-heart {
+		font-size: 3rem;
+		color: #b8860b;
+		margin-bottom: 20px;
+		display: inline-block;
+		animation: pulse-heart 2s infinite ease-in-out;
+	}
+
+	.final-text {
+		font-family: 'Cinzel', serif;
+		font-size: 1.5rem;
+		line-height: 1.8;
+		color: #555;
+		margin-bottom: 40px;
+		font-style: italic;
+	}
+
+	.signature {
+		font-family: 'Great Vibes', cursive;
+		font-size: 3.5rem;
+		color: #b8860b;
+	}
+
+	.secret-button {
+		display: block;
+		width: 80px;
+		height: 50px;
+		margin: 5px auto 0;
+		cursor: pointer;
+	}
+
+	@keyframes pulse-heart {
+		0% { transform: scale(1); }
+		50% { transform: scale(1.2); }
+		100% { transform: scale(1); }
+	}
+</style>

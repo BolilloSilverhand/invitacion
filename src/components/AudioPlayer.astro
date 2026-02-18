@@ -1,0 +1,113 @@
+---
+---
+<div class="audio-player-container">
+  <audio id="bg-music" loop>
+    <source src="/tol.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  
+  <button id="play-pause-btn" class="play-btn" aria-label="Reproducir música">
+    <div class="icon-container">
+      <!-- Icono Play -->
+      <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <!-- Icono Pause (oculto por defecto) -->
+      <svg id="pause-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </div>
+    <span class="song-title">Thinking Out Loud - Ed Sheeran</span>
+  </button>
+</div>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const btn = document.getElementById('play-pause-btn');
+  const playIcon = document.getElementById('play-icon');
+  const pauseIcon = document.getElementById('pause-icon');
+
+  if (btn && audio && playIcon && pauseIcon) {
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        btn.classList.add('playing');
+      } else {
+        audio.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        btn.classList.remove('playing');
+      }
+    });
+  }
+</script>
+
+<style>
+  .audio-player-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999; /* Para asegurar que esté siempre encima de todo */
+  }
+
+  .play-btn {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #b8860b;
+    border-radius: 50px;
+    width: 60px; /* Inicio compacto */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alineación para expansión */
+    cursor: pointer;
+    color: #b8860b;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .play-btn:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  .play-btn.playing {
+    animation: pulse-gold 2s infinite;
+    background-color: #fffaf0;
+    width: 320px; /* Se expande al reproducir */
+  }
+
+  .icon-container {
+    min-width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .song-title {
+    white-space: nowrap;
+    opacity: 0;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+
+  .play-btn.playing .song-title {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(184, 134, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); }
+  }
+</style>
