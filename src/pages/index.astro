@@ -4,14 +4,13 @@ import Layout from '../layouts/Layout.astro';
 // Datos de la invitación (Inventados para el ejemplo)
 const boda = {
   novios: "Araceli & Victor",
-  fecha: "6 de Marzo, 2025",
+  fecha: "6 de Marzo, 2026",
   lugarMisa: "Parroquia de San Juan Bautista",
   direccionMisa: "Calle Hidalgo #45, Centro Histórico",
   horaMisa: "19:00 HRS",
   lugarRecepcion: "Hacienda Elegancia",
   direccionRecepcion: "Sierra Madre Occidental 1011 m. Mercado de Lopez sanchez 27000 Torreón Coah",
-  horaRecepcion: "21:00 HRS",
-  codigoVestimenta: "Etiqueta Rigurosa"
+  horaRecepcion: "21:00 HRS"
 };
 ---
 
@@ -34,13 +33,24 @@ const boda = {
 				<h2 class="story-title scroll-item">Hace 25 años iniciamos nuestra historia</h2>
 				<div class="divider-gold scroll-item expand-width"></div>
 				<p class="story-text scroll-item">
-					Y desde entonces hemos caminado juntos, hemos superado obstáculos, hemos cumplido metas, llorado juntos y hemos creado una familia hermosa y unida.
+					Y desde entonces hemos caminado juntos. 
+				</p>
+				<p class="story-text scroll-item">
+					Hemos superado obstáculos.
+				</p>
+				<p class="story-text scroll-item">
+					Hemos cumplido metas, llorado juntos y hemos creado una familia hermosa y unida.
 				</p>
 			</div>
 		</section>
 
 		<!-- Sección de Detalles -->
 		<section class="details">
+			<!-- Renglón para el título -->
+			<div class="title-row animate-sequence">
+				<h2 class="big-centered-title scroll-item zoom-in">Te invitamos a acompañarnos a la misa</h2>
+			</div>
+
 			<!-- Bloque Ceremonia Religiosa (Nuevo Diseño) -->
 			<div class="ceremony-block animate-sequence">
 				<div class="ceremony-text">
@@ -90,7 +100,7 @@ const boda = {
 
 			<!-- Bloque Código de Vestimenta (Interactivo) -->
 			<div class="dress-code-block slide-up delay-2">
-				<h2>Código de Vestimenta</h2>
+				<h2>Rigurosa etiqueta</h2>
 				<div class="divider-black"></div>
 				
 				<div class="genders-container">
@@ -102,11 +112,10 @@ const boda = {
 					<div class="gender-option">
 						<img src="/vestido.png" alt="Icono de vestimenta para mujer" class="gender-icon bounce-hover">
 						<h3>Mujeres</h3>
-						<div class="dress-detail">Vestido Largo</div>
+						<div class="dress-detail">Vestido de Gala</div>
 					</div>
 				</div>
 				
-				<p class="note">Rigurosa etiqueta.</p>
 			</div>
 
 			<!-- Sección Final (Mensaje de Despedida) -->
@@ -123,13 +132,6 @@ const boda = {
 		</section>
 	
 	<script>
-		const options = document.querySelectorAll('.gender-option');
-		options.forEach(option => {
-			option.addEventListener('click', () => {
-				option.classList.toggle('active');
-			});
-		});
-
 		// Animación de secuencia al hacer scroll
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
@@ -296,6 +298,20 @@ const boda = {
 		align-items: center;
 	}
 
+	.title-row {
+		width: 100%;
+		background: white; /* Mismo fondo que el bloque de abajo */
+		text-align: center;
+		padding: 60px 20px 20px; /* Espacio arriba y un poco abajo */
+	}
+
+	.big-centered-title {
+		font-family: 'Great Vibes', cursive;
+		font-size: 5rem;
+		color: #b8860b;
+		margin: 0;
+	}
+
 	.card {
 		background: white;
 		padding: 40px;
@@ -333,7 +349,7 @@ const boda = {
 		overflow: hidden;
 		box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 		margin-bottom: 0;
-		padding: 60px 0;
+		padding: 0 0 60px 0; /* Quitamos el padding superior para que se junte con el título */
 	}
 
 	.ceremony-text {
@@ -568,6 +584,9 @@ const boda = {
 		:global(body) {
 			background-image: url('/herofinMobile.webp');
 		}
+		.big-centered-title {
+			font-size: 3.5rem;
+		}
 		.title { font-size: 3.5rem; }
 		.details { padding: 40px 15px; }
 		.ceremony-block {
@@ -615,7 +634,6 @@ const boda = {
 	}
 
 	.gender-option {
-		cursor: pointer;
 		padding: 20px;
 		border-radius: 10px;
 		transition: background 0.3s;
@@ -652,19 +670,10 @@ const boda = {
 	}
 
 	.dress-detail {
-		max-height: 0;
-		overflow: hidden;
-		transition: max-height 0.5s ease, opacity 0.5s ease;
-		opacity: 0;
 		color: #b8860b;
 		font-weight: bold;
 		font-size: 1.2rem;
 		margin-top: 10px;
-	}
-
-	.gender-option.active .dress-detail {
-		max-height: 100px;
-		opacity: 1;
 	}
 
 	.note {
