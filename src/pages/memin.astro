@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
   </main>
 </Layout>
 
-<script>
+<script is:inline>
   const meminAudio = document.getElementById('memin-audio');
   const meminImage = document.getElementById('memin-random-image');
 
@@ -35,61 +35,25 @@ import Layout from '../layouts/Layout.astro';
     'WhatsApp Image 2026-03-03 at 6.38.06 PM.jpeg'
   ];
 
-  const randomIndex = (max) => Math.floor(Math.random() * max);
-  let meminIntervalId = null;
-  let lastImageIndex = -1;
-
-  const setRandomImage = () => {
-    if (!(meminImage instanceof HTMLImageElement) || meminImageFiles.length === 0) {
-      return;
-    }
-
-    let nextIndex = randomIndex(meminImageFiles.length);
-    if (meminImageFiles.length > 1) {
-      while (nextIndex === lastImageIndex) {
-        nextIndex = randomIndex(meminImageFiles.length);
-      }
-    }
-
-    lastImageIndex = nextIndex;
-    const fileName = meminImageFiles[nextIndex];
-    meminImage.src = `/botijones/${encodeURIComponent(fileName)}`;
-  };
-
-  if (meminImage instanceof HTMLImageElement) {
-    setRandomImage();
-    meminIntervalId = window.setInterval(setRandomImage, 2000);
+  function changeToRandomImage() {
+    if (!meminImage || meminImageFiles.length === 0) return;
+    const randomFile = meminImageFiles[Math.floor(Math.random() * meminImageFiles.length)];
+    meminImage.src = '/botijones/' + encodeURIComponent(randomFile);
   }
 
-  if (meminAudio instanceof HTMLAudioElement) {
-    const startAudio = () => {
-      const playPromise = meminAudio.play();
-      if (playPromise) {
-        playPromise.catch(() => {});
-      }
-    };
+  changeToRandomImage();
+  const imageInterval = setInterval(changeToRandomImage, 3000);
 
-    const stopAudio = () => {
-      meminAudio.pause();
-      meminAudio.currentTime = 0;
-    };
-
-    startAudio();
-    window.addEventListener('pagehide', stopAudio);
-    window.addEventListener('beforeunload', stopAudio);
-    document.addEventListener('astro:before-swap', stopAudio);
+  if (meminAudio) {
+    meminAudio.play().catch(() => {});
   }
 
-  const cleanupImageInterval = () => {
-    if (meminIntervalId !== null) {
-      window.clearInterval(meminIntervalId);
-      meminIntervalId = null;
-    }
-  };
-
-  window.addEventListener('pagehide', cleanupImageInterval);
-  window.addEventListener('beforeunload', cleanupImageInterval);
-  document.addEventListener('astro:before-swap', cleanupImageInterval);
+  window.addEventListener('beforeunload', () => {
+    clearInterval(imageInterval);
+    if (!meminAudio) return;
+    meminAudio.pause();
+    meminAudio.currentTime = 0;
+  });
 </script>
 
 <style>
