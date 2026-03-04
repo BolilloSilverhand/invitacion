@@ -1,5 +1,7 @@
 ---
 import AudioPlayer from '../components/AudioPlayer.astro';
+
+const isMeminPage = Astro.url.pathname === '/memin' || Astro.url.pathname === '/memin/';
 ---
 
 <!doctype html>
@@ -13,7 +15,7 @@ import AudioPlayer from '../components/AudioPlayer.astro';
 	</head>
 	<body>
 		<slot />
-		<AudioPlayer />
+		{!isMeminPage && <AudioPlayer />}
 	</body>
 </html>
 

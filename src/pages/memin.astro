@@ -4,27 +4,167 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Memin">
   <main class="memin-container">
-    <img src="/memin.webp" alt="Memin" class="memin-image" />
+    <p class="satanic-message" aria-label="Puedes verlo tu tambien? Ellos si pueden verte a ti">
+      it a etrev nedéup ís sollE ?néibmat út olrev sedeuP?
+    </p>
+
+    <img id="memin-random-image" src="/botijones/memin.webp" alt="Memin" class="memin-image" />
+    <audio id="memin-audio" src="/TheTempleofTheBotijones.mp3" preload="auto" autoplay></audio>
   </main>
 </Layout>
+
+<script>
+  const meminAudio = document.getElementById('memin-audio');
+  const meminImage = document.getElementById('memin-random-image');
+
+  const meminImageFiles = [
+    'memin.webp',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (1).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (10).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (11).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (12).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (13).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (2).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (3).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (4).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (5).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (6).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (7).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (8).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM (9).jpeg',
+    'WhatsApp Image 2026-03-03 at 6.38.06 PM.jpeg'
+  ];
+
+  const randomIndex = (max) => Math.floor(Math.random() * max);
+  let meminIntervalId = null;
+  let lastImageIndex = -1;
+
+  const setRandomImage = () => {
+    if (!(meminImage instanceof HTMLImageElement) || meminImageFiles.length === 0) {
+      return;
+    }
+
+    let nextIndex = randomIndex(meminImageFiles.length);
+    if (meminImageFiles.length > 1) {
+      while (nextIndex === lastImageIndex) {
+        nextIndex = randomIndex(meminImageFiles.length);
+      }
+    }
+
+    lastImageIndex = nextIndex;
+    const fileName = meminImageFiles[nextIndex];
+    meminImage.src = `/botijones/${encodeURIComponent(fileName)}`;
+  };
+
+  if (meminImage instanceof HTMLImageElement) {
+    setRandomImage();
+    meminIntervalId = window.setInterval(setRandomImage, 2000);
+  }
+
+  if (meminAudio instanceof HTMLAudioElement) {
+    const startAudio = () => {
+      const playPromise = meminAudio.play();
+      if (playPromise) {
+        playPromise.catch(() => {});
+      }
+    };
+
+    const stopAudio = () => {
+      meminAudio.pause();
+      meminAudio.currentTime = 0;
+    };
+
+    startAudio();
+    window.addEventListener('pagehide', stopAudio);
+    window.addEventListener('beforeunload', stopAudio);
+    document.addEventListener('astro:before-swap', stopAudio);
+  }
+
+  const cleanupImageInterval = () => {
+    if (meminIntervalId !== null) {
+      window.clearInterval(meminIntervalId);
+      meminIntervalId = null;
+    }
+  };
+
+  window.addEventListener('pagehide', cleanupImageInterval);
+  window.addEventListener('beforeunload', cleanupImageInterval);
+  document.addEventListener('astro:before-swap', cleanupImageInterval);
+</script>
 
 <style>
   :global(body) {
     background-color: #000;
-    background-image: none; /* Anulamos el fondo de la boda */
+    background-image: none;
   }
 
   .memin-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    gap: 20px;
+  }
+
+  .satanic-message {
+    color: #0a0a0a;
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: clamp(1.2rem, 2.8vw, 2.3rem);
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.35;
+    position: relative;
+    padding: 12px 18px;
+    border: 1px solid rgba(120, 0, 0, 0.5);
+    border-radius: 4px;
+    background: radial-gradient(circle at center, rgba(70, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.85) 70%);
+    text-shadow:
+      0 0 1px rgba(255, 255, 255, 0.35),
+      0 0 8px rgba(190, 0, 0, 0.55),
+      0 0 14px rgba(120, 0, 0, 0.45);
+    transform: scaleX(-1);
+    margin: 0;
+    animation: ritual-flicker 3.2s infinite;
+  }
+
+  .satanic-message::before,
+  .satanic-message::after {
+    color: rgba(170, 0, 0, 0.85);
+    font-size: 0.9em;
+    vertical-align: middle;
   }
 
   .memin-image {
     max-width: 100%;
     max-height: 90vh;
     height: auto;
+  }
+
+  #memin-audio {
+    display: none;
+  }
+
+  @keyframes ritual-flicker {
+    0%,
+    100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+    18% {
+      opacity: 0.92;
+      filter: brightness(1.1);
+    }
+    41% {
+      opacity: 0.97;
+      filter: brightness(0.95);
+    }
+    69% {
+      opacity: 0.9;
+      filter: brightness(1.15);
+    }
   }
 </style>
